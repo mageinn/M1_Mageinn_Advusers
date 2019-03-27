@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageinn_Advusers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Mageinn
+ * @package     Mageinn_Advusers
+ * @copyright   Copyright (c) 2016 Mageinn. (http://mageinn.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Mageinn
+ * @package    Mageinn_Advusers
+ * @author     Mageinn
+ */
+-->
+<config>
+    <modules>
+        <Mageinn_Advusers>
+            <version>1.2.0</version>
+        </Mageinn_Advusers>
+    </modules>
+    
+    <global>
+        <resources>
+            <advusers_setup>
+                <setup>
+                    <module>Mageinn_Advusers</module>
+                    <class>Mageinn_Advusers_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </advusers_setup>
+        </resources>
+
+        <models>
+            <mageinn_advusers>
+                <class>Mageinn_Advusers_Model</class>
+                <resourceModel>mageinn_advusers_resource</resourceModel>
+            </mageinn_advusers>
+            <mageinn_advusers_resource>
+                <class>Mageinn_Advusers_Model_Resource</class>
+                <entities>
+                    <mapping>
+                        <table>mageinn_advusers_mapping</table>
+                    </mapping>
+                </entities>
+            </mageinn_advusers_resource>
+            <awrma>
+                <rewrite>
+                    <notify>Mageinn_Advusers_Model_Notify</notify>
+                </rewrite>
+            </awrma>
+        </models>
+        
+        <blocks>
+            <mageinn_advusers>
+                <class>Mageinn_Advusers_Block</class>
+            </mageinn_advusers>
+        </blocks>
+        
+        <helpers>
+            <mageinn_advusers>
+                <class>Mageinn_Advusers_Helper</class>
+            </mageinn_advusers>
+        </helpers>
+        
+        <events>
+            <sales_order_save_before>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>mageinn_advusers/observer</class>
+                        <type>singleton</type>
+                        <method>salesOrderBeforeSave</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </sales_order_save_before>
+            <sales_order_save_after>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>mageinn_advusers/observer</class>
+                        <type>singleton</type>
+                        <method>salesOrderSaveAfter</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </sales_order_save_after>
+            <sales_order_invoice_pay>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>mageinn_advusers/observer</class>
+                        <method>salesOrderInvoicePay</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </sales_order_invoice_pay>
+        </events>
+        <template>
+            <email>
+                <mageinn_advusers_new_order_notification_template translate="label" module="mageinn_advusers">
+                    <label>Mageinn UserProduct Approved Email</label>
+                    <file>mageinn_advusers_new_order_notification_template.html</file>
+                    <type>html</type>
+                </mageinn_advusers_new_order_notification_template>
+                <mageinn_advusers_order_update_notification_template translate="label" module="mageinn_advusers">
+                    <label>Mageinn UserProduct Rejected Email</label>
+                    <file>mageinn_advusers_order_update_notification_template.html</file>
+                    <type>html</type>
+                </mageinn_advusers_order_update_notification_template>
+            </email>
+        </template>
+    </global>
+    <admin>
+        <routers>
+            <mageinn_advusers_admin>
+                <use>admin</use>
+                <args>
+                    <module>Mageinn_Advusers</module>
+                    <frontName>advusersadmin</frontName>
+                </args>
+            </mageinn_advusers_admin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mageinn_advusers translate="title" module="mageinn_advusers">
+                                            <title>Advanced Users Permissions</title>
+                                        </mageinn_advusers>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <events>
+            <adminhtml_catalog_category_tabs>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>Mageinn_Advusers_Model_Observer</class>
+                        <type>singleton</type>
+                        <method>addCategoryTab</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </adminhtml_catalog_category_tabs>
+            <adminhtml_block_html_before>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>mageinn_advusers/observer</class>
+                        <type>singleton</type>
+                        <method>adminhtmlBlockHtmlBefore</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </adminhtml_block_html_before>
+            <sales_order_load_after>
+                <observers>
+                    <mageinn_advusers_observer>
+                        <class>mageinn_advusers/observer</class>
+                        <method>orderLoadAfter</method>
+                    </mageinn_advusers_observer>
+                </observers>
+            </sales_order_load_after>
+        </events>
+    </adminhtml>
+    <default>
+        <mageinn_advusers>
+            <general>
+                <enabled>1</enabled>
+                <new_order_notification_template>mageinn_advusers_new_order_notification_template</new_order_notification_template>
+                <order_update_notification_template>mageinn_advusers_order_update_notification_template</order_update_notification_template>
+            </general>
+        </mageinn_advusers>
+    </default>
+</config>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<package>
+    <name>Mageinn_Advusers</name>
+    <version>1.2.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL 3.0)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This module allows you to assign managers to orders on a 'per-category' basis. Managers will be able to receive relevant order notifications as well as manage their orders.</summary>
+    <description>This module allows you to assign managers to orders on a 'per-category' basis. Managers will be able to receive relevant order notifications as well as manage their orders.</description>
+    <notes>==== 1.2.0 ====&#xD;
+&#xD;
+=== Improvements ===&#xD;
+Added debug configuration&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+==== 1.1.0 ====&#xD;
+&#xD;
+=== Improvements ===&#xD;
+Added global configuration which allows to switch on/off order edit permissions.&#xD;
+&#xD;
+=== Fixes ===&#xD;
+Fixed:  Send new notifications only when order is paid.&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+==== 1.0.1 ====&#xD;
+&#xD;
+=== Fixes ===&#xD;
+Fixed: Comment var was not passed to email template when order is updated&#xD;
+&#xD;
+&#xD;
+&#xD;
+==== 1.0.0 ====&#xD;
+&#xD;
+Initial Release&#xD;
+&#xD;
+&#xD;
+</notes>
+    <authors><author><name>Mageinn</name><user>Mageinn</user><email>sales@mageinn.com</email></author></authors>
+    <date>2016-11-25</date>
+    <time>15:01:07</time>
+    <contents><target name="magecommunity"><dir name="Mageinn"><dir name="Advusers"><dir name="Block"><dir name="Adminhtml"><dir name="Catalog"><dir name="Category"><dir name="Tab"><file name="Mapping.php" hash="b470185ebc3d081d08ff556e986c4aee"/></dir></dir></dir><dir name="Mapping"><dir name="Edit"><file name="Form.php" hash="2220b687af9bfe1989a9e80ae77c5df2"/></dir><file name="Edit.php" hash="fdc4147b51d85c0c3a25a2a7855362b4"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="20fff100b67addc155cc462cf06827bb"/></dir><dir name="Model"><file name="Mapping.php" hash="da582454f17293507b638ac21b56f63b"/><file name="Notify.php" hash="9dac179545f7a7ca21a8590042cfd2c4"/><file name="Observer.php" hash="cc987ed695eb0ff9dc9ba6f6bae80080"/><dir name="Resource"><dir name="Mapping"><file name="Collection.php" hash="6f59001263930d9c9e63c8b2c326b8e1"/></dir><file name="Mapping.php" hash="f4a0103415829130949644a4cd7c20ac"/><file name="Setup.php" hash="5c0fea76b3a38b2582f0b06e99ed0e92"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><file name="MappingController.php" hash="f0c9aeb09940a99f18a05ee65a59a687"/></dir></dir><dir name="etc"><file name="config.xml" hash="5787bdb73b6ff89b6865189e9fb287c0"/><file name="system.xml" hash="e57853511406975847babfa9b5dbd970"/></dir><dir name="sql"><dir name="advusers_setup"><file name="mysql4-install-0.0.1.php" hash="a87d872fed58302724229ae6a4d82332"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Mageinn_Advusers.xml" hash="a343ab6fd312b2a51c9947c0fee796e6"/></dir></target><target name="magelocale"><dir name="en_US"><dir name="template"><dir name="email"><file name="mageinn_advusers_new_order_notification_template.html" hash="72ce889b5c8782ebc9cb10ae6c818e4c"/><file name="mageinn_advusers_order_update_notification_template.html" hash="6c07f24208bfdf7192019666931b76c9"/></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>7.0.6</max></php></required></dependencies>
+</package>
